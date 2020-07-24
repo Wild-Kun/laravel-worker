@@ -1,0 +1,137 @@
+<template>
+    <div class="container">
+        <a href="?room_id=1" class="btn btn-danger">吃货人生</a>
+        <a href="?room_id=2" class="btn btn-primary">技术探讨</a>
+        <hr class="divider">
+
+        <div class="row">
+            <div class="col-md-8">
+                <div class="panel panel-default">
+                    <div class="panel-heading">聊天室</div>
+                    <div class="panel-body">
+
+                        <div class="messages">
+                            <div class="media" >
+                                <div class="media-left">
+                                    <a href="#">
+                                        <img class="media-object img-circle" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1595618947683&di=096599f826da31e0a4b394f44ad6dfc0&imgtype=0&src=http%3A%2F%2Ff.hiphotos.baidu.com%2Fzhidao%2Fpic%2Fitem%2F0eb30f2442a7d933ed8c1316af4bd11373f001aa.jpg" >
+                                    </a>
+                                </div>
+                                <div class="media-body">
+                                    <p class="time">message.time</p>
+                                    <h4 class="media-heading">message.name</h4>
+                                    message.content
+                                </div>
+                            </div>
+                            <div class="media" >
+                                <div class="media-left">
+                                    <a href="#">
+                                        <img class="media-object img-circle" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1595618947683&di=096599f826da31e0a4b394f44ad6dfc0&imgtype=0&src=http%3A%2F%2Ff.hiphotos.baidu.com%2Fzhidao%2Fpic%2Fitem%2F0eb30f2442a7d933ed8c1316af4bd11373f001aa.jpg" >
+                                    </a>
+                                </div>
+                                <div class="media-body">
+                                    <p class="time">message.time</p>
+                                    <h4 class="media-heading">message.name</h4>
+                                    message.content
+                                </div>
+                            </div>
+                            <div class="media" >
+                                <div class="media-left">
+                                    <a href="#">
+                                        <img class="media-object img-circle" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1595618947683&di=096599f826da31e0a4b394f44ad6dfc0&imgtype=0&src=http%3A%2F%2Ff.hiphotos.baidu.com%2Fzhidao%2Fpic%2Fitem%2F0eb30f2442a7d933ed8c1316af4bd11373f001aa.jpg" >
+                                    </a>
+                                </div>
+                                <div class="media-body">
+                                    <p class="time">message.time</p>
+                                    <h4 class="media-heading">message.name</h4>
+                                    message.content
+                                </div>
+                            </div>
+                            <div class="media" >
+                                <div class="media-left">
+                                    <a href="#">
+                                        <img class="media-object img-circle" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1595618947683&di=096599f826da31e0a4b394f44ad6dfc0&imgtype=0&src=http%3A%2F%2Ff.hiphotos.baidu.com%2Fzhidao%2Fpic%2Fitem%2F0eb30f2442a7d933ed8c1316af4bd11373f001aa.jpg" >
+                                    </a>
+                                </div>
+                                <div class="media-body">
+                                    <p class="time">message.time</p>
+                                    <h4 class="media-heading">message.name</h4>
+                                    message.content
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading">在线用户</div>
+
+                    <div class="panel-body">
+                        <ul class="list-group">
+                            <li class="list-group-item" >
+                                <img  class="img-circle" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1595618947683&di=096599f826da31e0a4b394f44ad6dfc0&imgtype=0&src=http%3A%2F%2Ff.hiphotos.baidu.com%2Fzhidao%2Fpic%2Fitem%2F0eb30f2442a7d933ed8c1316af4bd11373f001aa.jpg">
+                                user.name
+                            </li>
+                            <li class="list-group-item" >
+                                <img  class="img-circle" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1595618947683&di=096599f826da31e0a4b394f44ad6dfc0&imgtype=0&src=http%3A%2F%2Ff.hiphotos.baidu.com%2Fzhidao%2Fpic%2Fitem%2F0eb30f2442a7d933ed8c1316af4bd11373f001aa.jpg">
+                                user.name
+                            </li>
+                            <li class="list-group-item" >
+                                <img  class="img-circle" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1595618947683&di=096599f826da31e0a4b394f44ad6dfc0&imgtype=0&src=http%3A%2F%2Ff.hiphotos.baidu.com%2Fzhidao%2Fpic%2Fitem%2F0eb30f2442a7d933ed8c1316af4bd11373f001aa.jpg">
+                                user.name
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <form @submit.prevent="onSubmit">
+            <div class="form-group">
+                <label for="user_id">私聊</label>
+
+                <select class="form-control" id="user_id">
+                    <option>所有人</option>
+                    <option >user.name</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label >内容</label>
+                <textarea class="form-control" rows="3" id="content" ></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-default">提交</button>
+        </form>
+    </div>
+</template>
+<script>
+    export default {
+        name: "ChatRoom"
+    }
+</script>
+
+<style scoped>
+    .panel-body {
+        height: 480px;
+        overflow: auto;
+    }
+    .media-object.img-circle {
+        width: 64px;
+        height: 64px;
+    }
+    .img-circle {
+        width: 48px;
+        height: 48px;
+    }
+    .time {
+        float: right;
+    }
+    .media {
+        margin-top: 24px;
+    }
+</style>

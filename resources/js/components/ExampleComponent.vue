@@ -6,7 +6,7 @@
                     <div class="card-header">Example Component</div>
 
                     <div class="card-body">
-                        你好 vue1
+                        你好 vue
                     </div>
                 </div>
             </div>
