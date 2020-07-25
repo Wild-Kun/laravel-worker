@@ -2018,6 +2018,13 @@ var ws = new WebSocket('ws://127.0.0.1:7272');
           _this.users = data.data;
           break;
 
+        case 'logout':
+          console.log(data);
+
+          _this.$delete(_this.users, data.client_id);
+
+          break;
+
         default:
           console.log(data);
       }

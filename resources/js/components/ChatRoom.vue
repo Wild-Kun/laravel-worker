@@ -98,6 +98,10 @@
                     case 'users':
                         this.users=data.data
                         break;
+                    case 'logout':
+                        console.log(data)
+                        this.$delete(this.users,data.client_id)
+                        break;
                     default:
                         console.log(data)
                 }

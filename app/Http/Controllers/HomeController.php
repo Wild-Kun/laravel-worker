@@ -141,6 +141,7 @@ class HomeController extends Controller
             'data' => Gateway::getAllClientSessions()
         ];
 
+        dump(session('room_id'));
         Gateway::sendToGroup(session('room_id'),json_encode($data));
     }
 }
