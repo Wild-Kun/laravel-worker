@@ -1975,23 +1975,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 var ws = new WebSocket('ws://127.0.0.1:7272');
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       messages: [],
-      content: ''
+      users: [],
+      content: '',
+      user_id: ''
     };
   },
   created: function created() {
@@ -2020,8 +2011,11 @@ var ws = new WebSocket('ws://127.0.0.1:7272');
           break;
 
         case 'history':
-          console.log(data.data);
           _this.messages = data.data;
+          break;
+
+        case 'users':
+          _this.users = data.data;
           break;
 
         default:
@@ -2032,7 +2026,8 @@ var ws = new WebSocket('ws://127.0.0.1:7272');
   methods: {
     onSubmit: function onSubmit() {
       axios.post('say', {
-        content: this.content
+        content: this.content,
+        user_id: this.user_id
       });
       this.content = '';
     }
@@ -38364,7 +38359,32 @@ var render = function() {
         ])
       ]),
       _vm._v(" "),
-      _vm._m(0)
+      _c("div", { staticClass: "col-md-4" }, [
+        _c("div", { staticClass: "panel panel-default" }, [
+          _c("div", { staticClass: "panel-heading" }, [_vm._v("在线用户")]),
+          _vm._v(" "),
+          _c("div", { staticClass: "panel-body" }, [
+            _c(
+              "ul",
+              { staticClass: "list-group" },
+              _vm._l(_vm.users, function(user) {
+                return _c("li", { staticClass: "list-group-item" }, [
+                  _c("img", {
+                    staticClass: "img-circle",
+                    attrs: { src: user.avatar }
+                  }),
+                  _vm._v(
+                    "\n                            " +
+                      _vm._s(user.name) +
+                      "\n                        "
+                  )
+                ])
+              }),
+              0
+            )
+          ])
+        ])
+      ])
     ]),
     _vm._v(" "),
     _c(
@@ -38378,7 +38398,50 @@ var render = function() {
         }
       },
       [
-        _vm._m(1),
+        _c("div", { staticClass: "form-group" }, [
+          _c("label", { attrs: { for: "user_id" } }, [_vm._v("私聊")]),
+          _vm._v(" "),
+          _c(
+            "select",
+            {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.user_id,
+                  expression: "user_id"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: { id: "user_id" },
+              on: {
+                change: function($event) {
+                  var $$selectedVal = Array.prototype.filter
+                    .call($event.target.options, function(o) {
+                      return o.selected
+                    })
+                    .map(function(o) {
+                      var val = "_value" in o ? o._value : o.value
+                      return val
+                    })
+                  _vm.user_id = $event.target.multiple
+                    ? $$selectedVal
+                    : $$selectedVal[0]
+                }
+              }
+            },
+            [
+              _c("option", [_vm._v("所有人")]),
+              _vm._v(" "),
+              _vm._l(_vm.users, function(user) {
+                return _c("option", { domProps: { value: user.id } }, [
+                  _vm._v(_vm._s(user.name))
+                ])
+              })
+            ],
+            2
+          )
+        ]),
         _vm._v(" "),
         _c("div", { staticClass: "form-group" }, [
           _c("label", [_vm._v("内容")]),
@@ -38415,75 +38478,7 @@ var render = function() {
     )
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-4" }, [
-      _c("div", { staticClass: "panel panel-default" }, [
-        _c("div", { staticClass: "panel-heading" }, [_vm._v("在线用户")]),
-        _vm._v(" "),
-        _c("div", { staticClass: "panel-body" }, [
-          _c("ul", { staticClass: "list-group" }, [
-            _c("li", { staticClass: "list-group-item" }, [
-              _c("img", {
-                staticClass: "img-circle",
-                attrs: {
-                  src:
-                    "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1595618947683&di=096599f826da31e0a4b394f44ad6dfc0&imgtype=0&src=http%3A%2F%2Ff.hiphotos.baidu.com%2Fzhidao%2Fpic%2Fitem%2F0eb30f2442a7d933ed8c1316af4bd11373f001aa.jpg"
-                }
-              }),
-              _vm._v(
-                "\n                            user.name\n                        "
-              )
-            ]),
-            _vm._v(" "),
-            _c("li", { staticClass: "list-group-item" }, [
-              _c("img", {
-                staticClass: "img-circle",
-                attrs: {
-                  src:
-                    "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1595618947683&di=096599f826da31e0a4b394f44ad6dfc0&imgtype=0&src=http%3A%2F%2Ff.hiphotos.baidu.com%2Fzhidao%2Fpic%2Fitem%2F0eb30f2442a7d933ed8c1316af4bd11373f001aa.jpg"
-                }
-              }),
-              _vm._v(
-                "\n                            user.name\n                        "
-              )
-            ]),
-            _vm._v(" "),
-            _c("li", { staticClass: "list-group-item" }, [
-              _c("img", {
-                staticClass: "img-circle",
-                attrs: {
-                  src:
-                    "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1595618947683&di=096599f826da31e0a4b394f44ad6dfc0&imgtype=0&src=http%3A%2F%2Ff.hiphotos.baidu.com%2Fzhidao%2Fpic%2Fitem%2F0eb30f2442a7d933ed8c1316af4bd11373f001aa.jpg"
-                }
-              }),
-              _vm._v(
-                "\n                            user.name\n                        "
-              )
-            ])
-          ])
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group" }, [
-      _c("label", { attrs: { for: "user_id" } }, [_vm._v("私聊")]),
-      _vm._v(" "),
-      _c("select", { staticClass: "form-control", attrs: { id: "user_id" } }, [
-        _c("option", [_vm._v("所有人")]),
-        _vm._v(" "),
-        _c("option", [_vm._v("user.name")])
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 

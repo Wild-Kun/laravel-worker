@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Message;
+use App\User;
 use Illuminate\Http\Request;
 use GatewayClient\Gateway;
 use Illuminate\Support\Facades\Auth;
@@ -17,7 +18,7 @@ class HomeController extends Controller
     }
 
 
-    public function index()
+    public function index(Request $request)
     {
         return view('home');
     }
@@ -30,6 +31,9 @@ class HomeController extends Controller
         // 历史记录
         $this->history();
 
+        // 在线用户
+        $this->users();
+
         // 进入聊天室
         $this->login();
     }
@@ -39,8 +43,18 @@ class HomeController extends Controller
         $id = Auth::id();
         $client_id = $request->client_id;
         Gateway::bindUid($client_id, $id);
+
+        Gateway::setSession($client_id, [
+            'id' => $id,
+            'avatar' => Auth::user()->avatar(),
+            'name' => Auth::user()->name
+        ]);
     }
 
+    /**
+     * 登录
+     * @throws \Exception
+     */
     private function login()
     {
         $data = [
@@ -55,6 +69,11 @@ class HomeController extends Controller
         Gateway::sendToAll(json_encode($data));
     }
 
+    /**
+     * 发送消息
+     * @param Request $request
+     * @throws \Exception
+     */
     public function say(Request $request)
     {
         $data = [
@@ -66,6 +85,17 @@ class HomeController extends Controller
                 'time' => date('Y-m-d H:i:s')
             ]
         ];
+
+        // 私聊
+        if ($request->user_id) {
+            dump($request->user_id);
+            $user= User::find($request->user_id);
+            dump($user);
+            $data['data']['name'] = Auth::user()->name . '对' . User::find($request->user_id)->name . '说：';
+            Gateway::sendToUid($request->user_id, json_encode($data));
+            Gateway::sendToUid(Auth::id(), json_encode($data));
+            return;
+        }
         Gateway::sendToAll(json_encode($data));
 
         //存入数据库
@@ -76,6 +106,9 @@ class HomeController extends Controller
 
     }
 
+    /**
+     * 历史记录
+     */
     private function history()
     {
         $data = ['type' => 'history'];
@@ -91,5 +124,19 @@ class HomeController extends Controller
         });
         //dump($data);
         Gateway::sendToUid(Auth::id(), json_encode($data));
+    }
+
+    /**
+     * 当前在线用户
+     * @throws \Exception
+     */
+    private function users()
+    {
+        $data = [
+            'type' => 'users',
+            'data' => Gateway::getAllClientSessions()
+        ];
+
+        Gateway::sendToAll(json_encode($data));
     }
 }
