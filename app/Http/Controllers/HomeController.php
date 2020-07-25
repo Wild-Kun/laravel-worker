@@ -20,6 +20,8 @@ class HomeController extends Controller
 
     public function index(Request $request)
     {
+        $room_id=$request->room_id ? $request->room_id : '1';
+        session()->put('room_id',$room_id);
         return view('home');
     }
 
@@ -44,6 +46,9 @@ class HomeController extends Controller
         $client_id = $request->client_id;
         Gateway::bindUid($client_id, $id);
 
+        // 加入群组
+        Gateway::joinGroup($client_id,session('room_id'));
+
         Gateway::setSession($client_id, [
             'id' => $id,
             'avatar' => Auth::user()->avatar(),
@@ -66,7 +71,7 @@ class HomeController extends Controller
                 'time' => date('Y-m-d H:i:s')
             ]
         ];
-        Gateway::sendToAll(json_encode($data));
+        Gateway::sendToGroup(session('room_id'),json_encode($data));
     }
 
     /**
@@ -88,19 +93,18 @@ class HomeController extends Controller
 
         // 私聊
         if ($request->user_id) {
-            dump($request->user_id);
             $user= User::find($request->user_id);
-            dump($user);
             $data['data']['name'] = Auth::user()->name . '对' . User::find($request->user_id)->name . '说：';
             Gateway::sendToUid($request->user_id, json_encode($data));
             Gateway::sendToUid(Auth::id(), json_encode($data));
             return;
         }
-        Gateway::sendToAll(json_encode($data));
+        Gateway::sendToGroup(session('room_id'),json_encode($data));
 
         //存入数据库
         Message::create([
             'user_id' => Auth::id(),
+            'room_id'=>session('room_id'),
             'content' => $request->input('content')
         ]);
 
@@ -112,7 +116,7 @@ class HomeController extends Controller
     private function history()
     {
         $data = ['type' => 'history'];
-        $messages = Message::with('user')->orderBy('id', 'desc')->limit(5)
+        $messages = Message::with('user')->where('room_id',session('room_id'))->orderBy('id', 'asc')->limit(5)
             ->get();
         $data['data'] = $messages->map(function ($item, $key) {
             return [
@@ -137,6 +141,6 @@ class HomeController extends Controller
             'data' => Gateway::getAllClientSessions()
         ];
 
-        Gateway::sendToAll(json_encode($data));
+        Gateway::sendToGroup(session('room_id'),json_encode($data));
     }
 }

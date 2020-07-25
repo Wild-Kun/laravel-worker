@@ -51,7 +51,7 @@
                 <label for="user_id">私聊</label>
 
                 <select class="form-control" id="user_id" v-model="user_id">
-                    <option>所有人</option>
+                    <option :value="0" selected>所有人</option>
                     <option v-for="user in users" :value="user.id">{{user.name}}</option>
                 </select>
             </div>

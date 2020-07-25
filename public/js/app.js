@@ -38431,7 +38431,11 @@ var render = function() {
               }
             },
             [
-              _c("option", [_vm._v("所有人")]),
+              _c(
+                "option",
+                { attrs: { selected: "" }, domProps: { value: 0 } },
+                [_vm._v("所有人")]
+              ),
               _vm._v(" "),
               _vm._l(_vm.users, function(user) {
                 return _c("option", { domProps: { value: user.id } }, [
