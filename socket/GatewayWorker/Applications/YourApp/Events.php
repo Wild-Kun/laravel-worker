@@ -63,6 +63,7 @@ class Events
            'type'      => 'logout',
            'client_id' => $client_id
        );
+
        Gateway::sendToAll(json_encode($data));
    }
 }

@@ -2025,6 +2025,10 @@ var ws = new WebSocket('ws://127.0.0.1:7272');
 
           break;
 
+        case 'ping':
+          ws.send('pong');
+          break;
+
         default:
           console.log(data);
       }

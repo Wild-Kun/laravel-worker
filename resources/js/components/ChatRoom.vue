@@ -102,6 +102,9 @@
                         console.log(data)
                         this.$delete(this.users,data.client_id)
                         break;
+                    case 'ping':
+                        ws.send('pong')
+                        break;
                     default:
                         console.log(data)
                 }
