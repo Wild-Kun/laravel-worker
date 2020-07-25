@@ -43,6 +43,10 @@ class User extends Authenticatable
      */
     public function avatar()
     {
-        return "http://www.wangkun.live:8802/avatar/" . md5(strtolower($this->email)) . "?d=retro&s=64";
+        return 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1595618947683&di=096599f826da31e0a4b394f44ad6dfc0&imgtype=0&src=http%3A%2F%2Ff.hiphotos.baidu.com%2Fzhidao%2Fpic%2Fitem%2F0eb30f2442a7d933ed8c1316af4bd11373f001aa.jpg';
+    }
+
+    public function messages(){
+        return $this->hasMany('App\Message');
     }
 }

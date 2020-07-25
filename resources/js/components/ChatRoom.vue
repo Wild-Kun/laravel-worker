@@ -11,52 +11,16 @@
                     <div class="panel-body">
 
                         <div class="messages">
-                            <div class="media" >
+                            <div class="media" v-for="message in messages">
                                 <div class="media-left">
                                     <a href="#">
-                                        <img class="media-object img-circle" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1595618947683&di=096599f826da31e0a4b394f44ad6dfc0&imgtype=0&src=http%3A%2F%2Ff.hiphotos.baidu.com%2Fzhidao%2Fpic%2Fitem%2F0eb30f2442a7d933ed8c1316af4bd11373f001aa.jpg" >
+                                        <img class="media-object img-circle" :src="message.avatar">
                                     </a>
                                 </div>
                                 <div class="media-body">
-                                    <p class="time">message.time</p>
-                                    <h4 class="media-heading">message.name</h4>
-                                    message.content
-                                </div>
-                            </div>
-                            <div class="media" >
-                                <div class="media-left">
-                                    <a href="#">
-                                        <img class="media-object img-circle" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1595618947683&di=096599f826da31e0a4b394f44ad6dfc0&imgtype=0&src=http%3A%2F%2Ff.hiphotos.baidu.com%2Fzhidao%2Fpic%2Fitem%2F0eb30f2442a7d933ed8c1316af4bd11373f001aa.jpg" >
-                                    </a>
-                                </div>
-                                <div class="media-body">
-                                    <p class="time">message.time</p>
-                                    <h4 class="media-heading">message.name</h4>
-                                    message.content
-                                </div>
-                            </div>
-                            <div class="media" >
-                                <div class="media-left">
-                                    <a href="#">
-                                        <img class="media-object img-circle" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1595618947683&di=096599f826da31e0a4b394f44ad6dfc0&imgtype=0&src=http%3A%2F%2Ff.hiphotos.baidu.com%2Fzhidao%2Fpic%2Fitem%2F0eb30f2442a7d933ed8c1316af4bd11373f001aa.jpg" >
-                                    </a>
-                                </div>
-                                <div class="media-body">
-                                    <p class="time">message.time</p>
-                                    <h4 class="media-heading">message.name</h4>
-                                    message.content
-                                </div>
-                            </div>
-                            <div class="media" >
-                                <div class="media-left">
-                                    <a href="#">
-                                        <img class="media-object img-circle" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1595618947683&di=096599f826da31e0a4b394f44ad6dfc0&imgtype=0&src=http%3A%2F%2Ff.hiphotos.baidu.com%2Fzhidao%2Fpic%2Fitem%2F0eb30f2442a7d933ed8c1316af4bd11373f001aa.jpg" >
-                                    </a>
-                                </div>
-                                <div class="media-body">
-                                    <p class="time">message.time</p>
-                                    <h4 class="media-heading">message.name</h4>
-                                    message.content
+                                    <p class="time">{{message.time}}</p>
+                                    <h4 class="media-heading">{{message.name}}</h4>
+                                    {{message.content}}
                                 </div>
                             </div>
                         </div>
@@ -71,16 +35,19 @@
 
                     <div class="panel-body">
                         <ul class="list-group">
-                            <li class="list-group-item" >
-                                <img  class="img-circle" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1595618947683&di=096599f826da31e0a4b394f44ad6dfc0&imgtype=0&src=http%3A%2F%2Ff.hiphotos.baidu.com%2Fzhidao%2Fpic%2Fitem%2F0eb30f2442a7d933ed8c1316af4bd11373f001aa.jpg">
+                            <li class="list-group-item">
+                                <img class="img-circle"
+                                     src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1595618947683&di=096599f826da31e0a4b394f44ad6dfc0&imgtype=0&src=http%3A%2F%2Ff.hiphotos.baidu.com%2Fzhidao%2Fpic%2Fitem%2F0eb30f2442a7d933ed8c1316af4bd11373f001aa.jpg">
                                 user.name
                             </li>
-                            <li class="list-group-item" >
-                                <img  class="img-circle" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1595618947683&di=096599f826da31e0a4b394f44ad6dfc0&imgtype=0&src=http%3A%2F%2Ff.hiphotos.baidu.com%2Fzhidao%2Fpic%2Fitem%2F0eb30f2442a7d933ed8c1316af4bd11373f001aa.jpg">
+                            <li class="list-group-item">
+                                <img class="img-circle"
+                                     src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1595618947683&di=096599f826da31e0a4b394f44ad6dfc0&imgtype=0&src=http%3A%2F%2Ff.hiphotos.baidu.com%2Fzhidao%2Fpic%2Fitem%2F0eb30f2442a7d933ed8c1316af4bd11373f001aa.jpg">
                                 user.name
                             </li>
-                            <li class="list-group-item" >
-                                <img  class="img-circle" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1595618947683&di=096599f826da31e0a4b394f44ad6dfc0&imgtype=0&src=http%3A%2F%2Ff.hiphotos.baidu.com%2Fzhidao%2Fpic%2Fitem%2F0eb30f2442a7d933ed8c1316af4bd11373f001aa.jpg">
+                            <li class="list-group-item">
+                                <img class="img-circle"
+                                     src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1595618947683&di=096599f826da31e0a4b394f44ad6dfc0&imgtype=0&src=http%3A%2F%2Ff.hiphotos.baidu.com%2Fzhidao%2Fpic%2Fitem%2F0eb30f2442a7d933ed8c1316af4bd11373f001aa.jpg">
                                 user.name
                             </li>
                         </ul>
@@ -96,13 +63,13 @@
 
                 <select class="form-control" id="user_id">
                     <option>所有人</option>
-                    <option >user.name</option>
+                    <option>user.name</option>
                 </select>
             </div>
 
             <div class="form-group">
-                <label >内容</label>
-                <textarea class="form-control" rows="3" id="content" ></textarea>
+                <label>内容</label>
+                <textarea class="form-control" rows="3" id="content" v-model="content"></textarea>
             </div>
 
             <button type="submit" class="btn btn-default">提交</button>
@@ -110,8 +77,45 @@
     </div>
 </template>
 <script>
+    let ws = new WebSocket('ws://127.0.0.1:7272');
     export default {
-        name: "ChatRoom"
+        data() {
+            return {
+                messages:[],
+                content:''
+            }
+        },
+        created: function () {
+            ws.onmessage = (e) => {
+                let data = JSON.parse(e.data)
+
+                let type = data.type || ''
+
+                switch (type) {
+                    case 'init':
+                        axios.post('/init', {client_id: data.client_id})
+                        break;
+                    case 'say':
+                        this.messages.push(data.data)
+                        this.$nextTick(function(){
+                            $('.panel-body').animate({scrollTop:$('.messages').height()});
+                        })
+                        break;
+                    case 'history':
+                        console.log(data.data)
+                        this.messages=data.data
+                        break;
+                    default:
+                        console.log(data)
+                }
+            }
+        },
+        methods: {
+            onSubmit(){
+                axios.post('say',{content:this.content})
+                this.content=''
+            }
+        }
     }
 </script>
 
@@ -120,17 +124,21 @@
         height: 480px;
         overflow: auto;
     }
+
     .media-object.img-circle {
         width: 64px;
         height: 64px;
     }
+
     .img-circle {
         width: 48px;
         height: 48px;
     }
+
     .time {
         float: right;
     }
+
     .media {
         margin-top: 24px;
     }

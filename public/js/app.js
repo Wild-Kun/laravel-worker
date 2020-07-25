@@ -1986,41 +1986,57 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+var ws = new WebSocket('ws://127.0.0.1:7272');
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "ChatRoom"
+  data: function data() {
+    return {
+      messages: [],
+      content: ''
+    };
+  },
+  created: function created() {
+    var _this = this;
+
+    ws.onmessage = function (e) {
+      var data = JSON.parse(e.data);
+      var type = data.type || '';
+
+      switch (type) {
+        case 'init':
+          axios.post('/init', {
+            client_id: data.client_id
+          });
+          break;
+
+        case 'say':
+          _this.messages.push(data.data);
+
+          _this.$nextTick(function () {
+            $('.panel-body').animate({
+              scrollTop: $('.messages').height()
+            });
+          });
+
+          break;
+
+        case 'history':
+          console.log(data.data);
+          _this.messages = data.data;
+          break;
+
+        default:
+          console.log(data);
+      }
+    };
+  },
+  methods: {
+    onSubmit: function onSubmit() {
+      axios.post('say', {
+        content: this.content
+      });
+      this.content = '';
+    }
+  }
 });
 
 /***/ }),
@@ -38306,7 +38322,50 @@ var render = function() {
     _vm._v(" "),
     _c("hr", { staticClass: "divider" }),
     _vm._v(" "),
-    _vm._m(0),
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-md-8" }, [
+        _c("div", { staticClass: "panel panel-default" }, [
+          _c("div", { staticClass: "panel-heading" }, [_vm._v("聊天室")]),
+          _vm._v(" "),
+          _c("div", { staticClass: "panel-body" }, [
+            _c(
+              "div",
+              { staticClass: "messages" },
+              _vm._l(_vm.messages, function(message) {
+                return _c("div", { staticClass: "media" }, [
+                  _c("div", { staticClass: "media-left" }, [
+                    _c("a", { attrs: { href: "#" } }, [
+                      _c("img", {
+                        staticClass: "media-object img-circle",
+                        attrs: { src: message.avatar }
+                      })
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "media-body" }, [
+                    _c("p", { staticClass: "time" }, [
+                      _vm._v(_vm._s(message.time))
+                    ]),
+                    _vm._v(" "),
+                    _c("h4", { staticClass: "media-heading" }, [
+                      _vm._v(_vm._s(message.name))
+                    ]),
+                    _vm._v(
+                      "\n                                " +
+                        _vm._s(message.content) +
+                        "\n                            "
+                    )
+                  ])
+                ])
+              }),
+              0
+            )
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _vm._m(0)
+    ]),
     _vm._v(" "),
     _c(
       "form",
@@ -38321,7 +38380,31 @@ var render = function() {
       [
         _vm._m(1),
         _vm._v(" "),
-        _vm._m(2),
+        _c("div", { staticClass: "form-group" }, [
+          _c("label", [_vm._v("内容")]),
+          _vm._v(" "),
+          _c("textarea", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.content,
+                expression: "content"
+              }
+            ],
+            staticClass: "form-control",
+            attrs: { rows: "3", id: "content" },
+            domProps: { value: _vm.content },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.content = $event.target.value
+              }
+            }
+          })
+        ]),
         _vm._v(" "),
         _c(
           "button",
@@ -38337,161 +38420,49 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-md-8" }, [
-        _c("div", { staticClass: "panel panel-default" }, [
-          _c("div", { staticClass: "panel-heading" }, [_vm._v("聊天室")]),
-          _vm._v(" "),
-          _c("div", { staticClass: "panel-body" }, [
-            _c("div", { staticClass: "messages" }, [
-              _c("div", { staticClass: "media" }, [
-                _c("div", { staticClass: "media-left" }, [
-                  _c("a", { attrs: { href: "#" } }, [
-                    _c("img", {
-                      staticClass: "media-object img-circle",
-                      attrs: {
-                        src:
-                          "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1595618947683&di=096599f826da31e0a4b394f44ad6dfc0&imgtype=0&src=http%3A%2F%2Ff.hiphotos.baidu.com%2Fzhidao%2Fpic%2Fitem%2F0eb30f2442a7d933ed8c1316af4bd11373f001aa.jpg"
-                      }
-                    })
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "media-body" }, [
-                  _c("p", { staticClass: "time" }, [_vm._v("message.time")]),
-                  _vm._v(" "),
-                  _c("h4", { staticClass: "media-heading" }, [
-                    _vm._v("message.name")
-                  ]),
-                  _vm._v(
-                    "\n                                message.content\n                            "
-                  )
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "media" }, [
-                _c("div", { staticClass: "media-left" }, [
-                  _c("a", { attrs: { href: "#" } }, [
-                    _c("img", {
-                      staticClass: "media-object img-circle",
-                      attrs: {
-                        src:
-                          "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1595618947683&di=096599f826da31e0a4b394f44ad6dfc0&imgtype=0&src=http%3A%2F%2Ff.hiphotos.baidu.com%2Fzhidao%2Fpic%2Fitem%2F0eb30f2442a7d933ed8c1316af4bd11373f001aa.jpg"
-                      }
-                    })
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "media-body" }, [
-                  _c("p", { staticClass: "time" }, [_vm._v("message.time")]),
-                  _vm._v(" "),
-                  _c("h4", { staticClass: "media-heading" }, [
-                    _vm._v("message.name")
-                  ]),
-                  _vm._v(
-                    "\n                                message.content\n                            "
-                  )
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "media" }, [
-                _c("div", { staticClass: "media-left" }, [
-                  _c("a", { attrs: { href: "#" } }, [
-                    _c("img", {
-                      staticClass: "media-object img-circle",
-                      attrs: {
-                        src:
-                          "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1595618947683&di=096599f826da31e0a4b394f44ad6dfc0&imgtype=0&src=http%3A%2F%2Ff.hiphotos.baidu.com%2Fzhidao%2Fpic%2Fitem%2F0eb30f2442a7d933ed8c1316af4bd11373f001aa.jpg"
-                      }
-                    })
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "media-body" }, [
-                  _c("p", { staticClass: "time" }, [_vm._v("message.time")]),
-                  _vm._v(" "),
-                  _c("h4", { staticClass: "media-heading" }, [
-                    _vm._v("message.name")
-                  ]),
-                  _vm._v(
-                    "\n                                message.content\n                            "
-                  )
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "media" }, [
-                _c("div", { staticClass: "media-left" }, [
-                  _c("a", { attrs: { href: "#" } }, [
-                    _c("img", {
-                      staticClass: "media-object img-circle",
-                      attrs: {
-                        src:
-                          "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1595618947683&di=096599f826da31e0a4b394f44ad6dfc0&imgtype=0&src=http%3A%2F%2Ff.hiphotos.baidu.com%2Fzhidao%2Fpic%2Fitem%2F0eb30f2442a7d933ed8c1316af4bd11373f001aa.jpg"
-                      }
-                    })
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "media-body" }, [
-                  _c("p", { staticClass: "time" }, [_vm._v("message.time")]),
-                  _vm._v(" "),
-                  _c("h4", { staticClass: "media-heading" }, [
-                    _vm._v("message.name")
-                  ]),
-                  _vm._v(
-                    "\n                                message.content\n                            "
-                  )
-                ])
-              ])
-            ])
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-4" }, [
-        _c("div", { staticClass: "panel panel-default" }, [
-          _c("div", { staticClass: "panel-heading" }, [_vm._v("在线用户")]),
-          _vm._v(" "),
-          _c("div", { staticClass: "panel-body" }, [
-            _c("ul", { staticClass: "list-group" }, [
-              _c("li", { staticClass: "list-group-item" }, [
-                _c("img", {
-                  staticClass: "img-circle",
-                  attrs: {
-                    src:
-                      "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1595618947683&di=096599f826da31e0a4b394f44ad6dfc0&imgtype=0&src=http%3A%2F%2Ff.hiphotos.baidu.com%2Fzhidao%2Fpic%2Fitem%2F0eb30f2442a7d933ed8c1316af4bd11373f001aa.jpg"
-                  }
-                }),
-                _vm._v(
-                  "\n                            user.name\n                        "
-                )
-              ]),
-              _vm._v(" "),
-              _c("li", { staticClass: "list-group-item" }, [
-                _c("img", {
-                  staticClass: "img-circle",
-                  attrs: {
-                    src:
-                      "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1595618947683&di=096599f826da31e0a4b394f44ad6dfc0&imgtype=0&src=http%3A%2F%2Ff.hiphotos.baidu.com%2Fzhidao%2Fpic%2Fitem%2F0eb30f2442a7d933ed8c1316af4bd11373f001aa.jpg"
-                  }
-                }),
-                _vm._v(
-                  "\n                            user.name\n                        "
-                )
-              ]),
-              _vm._v(" "),
-              _c("li", { staticClass: "list-group-item" }, [
-                _c("img", {
-                  staticClass: "img-circle",
-                  attrs: {
-                    src:
-                      "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1595618947683&di=096599f826da31e0a4b394f44ad6dfc0&imgtype=0&src=http%3A%2F%2Ff.hiphotos.baidu.com%2Fzhidao%2Fpic%2Fitem%2F0eb30f2442a7d933ed8c1316af4bd11373f001aa.jpg"
-                  }
-                }),
-                _vm._v(
-                  "\n                            user.name\n                        "
-                )
-              ])
+    return _c("div", { staticClass: "col-md-4" }, [
+      _c("div", { staticClass: "panel panel-default" }, [
+        _c("div", { staticClass: "panel-heading" }, [_vm._v("在线用户")]),
+        _vm._v(" "),
+        _c("div", { staticClass: "panel-body" }, [
+          _c("ul", { staticClass: "list-group" }, [
+            _c("li", { staticClass: "list-group-item" }, [
+              _c("img", {
+                staticClass: "img-circle",
+                attrs: {
+                  src:
+                    "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1595618947683&di=096599f826da31e0a4b394f44ad6dfc0&imgtype=0&src=http%3A%2F%2Ff.hiphotos.baidu.com%2Fzhidao%2Fpic%2Fitem%2F0eb30f2442a7d933ed8c1316af4bd11373f001aa.jpg"
+                }
+              }),
+              _vm._v(
+                "\n                            user.name\n                        "
+              )
+            ]),
+            _vm._v(" "),
+            _c("li", { staticClass: "list-group-item" }, [
+              _c("img", {
+                staticClass: "img-circle",
+                attrs: {
+                  src:
+                    "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1595618947683&di=096599f826da31e0a4b394f44ad6dfc0&imgtype=0&src=http%3A%2F%2Ff.hiphotos.baidu.com%2Fzhidao%2Fpic%2Fitem%2F0eb30f2442a7d933ed8c1316af4bd11373f001aa.jpg"
+                }
+              }),
+              _vm._v(
+                "\n                            user.name\n                        "
+              )
+            ]),
+            _vm._v(" "),
+            _c("li", { staticClass: "list-group-item" }, [
+              _c("img", {
+                staticClass: "img-circle",
+                attrs: {
+                  src:
+                    "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1595618947683&di=096599f826da31e0a4b394f44ad6dfc0&imgtype=0&src=http%3A%2F%2Ff.hiphotos.baidu.com%2Fzhidao%2Fpic%2Fitem%2F0eb30f2442a7d933ed8c1316af4bd11373f001aa.jpg"
+                }
+              }),
+              _vm._v(
+                "\n                            user.name\n                        "
+              )
             ])
           ])
         ])
@@ -38510,19 +38481,6 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("option", [_vm._v("user.name")])
       ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group" }, [
-      _c("label", [_vm._v("内容")]),
-      _vm._v(" "),
-      _c("textarea", {
-        staticClass: "form-control",
-        attrs: { rows: "3", id: "content" }
-      })
     ])
   }
 ]

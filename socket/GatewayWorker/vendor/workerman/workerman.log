@@ -1,0 +1,70 @@
+2020-07-25 12:24:47 pid:1 Exception: You can't send(object) to client, you need to convert it to a string.  in E:\WWW\laravel-worker\socket\GatewayWorker\vendor\workerman\workerman\Protocols\Websocket.php:236
+Stack trace:
+#0 E:\WWW\laravel-worker\socket\GatewayWorker\vendor\workerman\workerman\Connection\TcpConnection.php(344): Workerman\Protocols\Websocket::encode(Object(__PHP_Incomplete_Class), Object(Workerman\Connection\TcpConnection))
+#1 E:\WWW\laravel-worker\socket\GatewayWorker\vendor\workerman\gateway-worker\src\Gateway.php(613): Workerman\Connection\TcpConnection->send(Object(__PHP_Incomplete_Class), false)
+#2 E:\WWW\laravel-worker\socket\GatewayWorker\vendor\workerman\workerman\Connection\TcpConnection.php(660): GatewayWorker\Gateway->onWorkerMessage(Object(Workerman\Connection\TcpConnection), Array)
+#3 E:\WWW\laravel-worker\socket\GatewayWorker\vendor\workerman\workerman\Events\Select.php(293): Workerman\Connection\TcpConnection->baseRead(Resource id #37)
+#4 E:\WWW\laravel-worker\socket\GatewayWorker\vendor\workerman\workerman\Worker.php(2408): Workerman\Events\Select->loop()
+#5 E:\WWW\laravel-worker\socket\GatewayWorker\vendor\workerman\gateway-worker\src\Gateway.php(276): Workerman\Worker->run()
+#6 E:\WWW\laravel-worker\socket\GatewayWorker\vendor\workerman\workerman\Worker.php(1404): GatewayWorker\Gateway->run()
+#7 E:\WWW\laravel-worker\socket\GatewayWorker\vendor\workerman\workerman\Worker.php(1347): Workerman\Worker::forkWorkersForWindows()
+#8 E:\WWW\laravel-worker\socket\GatewayWorker\vendor\workerman\workerman\Worker.php(546): Workerman\Worker::forkWorkers()
+#9 E:\WWW\laravel-worker\socket\GatewayWorker\Applications\YourApp\start_gateway.php(63): Workerman\Worker::runAll()
+#10 {main}
+2020-07-25 12:24:47 pid:1 Worker process terminated
+2020-07-25 12:25:37 pid:1 Exception: You can't send(object) to client, you need to convert it to a string.  in E:\WWW\laravel-worker\socket\GatewayWorker\vendor\workerman\workerman\Protocols\Websocket.php:236
+Stack trace:
+#0 E:\WWW\laravel-worker\socket\GatewayWorker\vendor\workerman\workerman\Connection\TcpConnection.php(344): Workerman\Protocols\Websocket::encode(Object(__PHP_Incomplete_Class), Object(Workerman\Connection\TcpConnection))
+#1 E:\WWW\laravel-worker\socket\GatewayWorker\vendor\workerman\gateway-worker\src\Gateway.php(613): Workerman\Connection\TcpConnection->send(Object(__PHP_Incomplete_Class), false)
+#2 E:\WWW\laravel-worker\socket\GatewayWorker\vendor\workerman\workerman\Connection\TcpConnection.php(660): GatewayWorker\Gateway->onWorkerMessage(Object(Workerman\Connection\TcpConnection), Array)
+#3 E:\WWW\laravel-worker\socket\GatewayWorker\vendor\workerman\workerman\Events\Select.php(293): Workerman\Connection\TcpConnection->baseRead(Resource id #37)
+#4 E:\WWW\laravel-worker\socket\GatewayWorker\vendor\workerman\workerman\Worker.php(2408): Workerman\Events\Select->loop()
+#5 E:\WWW\laravel-worker\socket\GatewayWorker\vendor\workerman\gateway-worker\src\Gateway.php(276): Workerman\Worker->run()
+#6 E:\WWW\laravel-worker\socket\GatewayWorker\vendor\workerman\workerman\Worker.php(1404): GatewayWorker\Gateway->run()
+#7 E:\WWW\laravel-worker\socket\GatewayWorker\vendor\workerman\workerman\Worker.php(1347): Workerman\Worker::forkWorkersForWindows()
+#8 E:\WWW\laravel-worker\socket\GatewayWorker\vendor\workerman\workerman\Worker.php(546): Workerman\Worker::forkWorkers()
+#9 E:\WWW\laravel-worker\socket\GatewayWorker\Applications\YourApp\start_gateway.php(63): Workerman\Worker::runAll()
+#10 {main}
+2020-07-25 12:25:37 pid:1 Worker process terminated
+2020-07-25 12:26:26 pid:1 Exception: You can't send(object) to client, you need to convert it to a string.  in E:\WWW\laravel-worker\socket\GatewayWorker\vendor\workerman\workerman\Protocols\Websocket.php:236
+Stack trace:
+#0 E:\WWW\laravel-worker\socket\GatewayWorker\vendor\workerman\workerman\Connection\TcpConnection.php(344): Workerman\Protocols\Websocket::encode(Object(__PHP_Incomplete_Class), Object(Workerman\Connection\TcpConnection))
+#1 E:\WWW\laravel-worker\socket\GatewayWorker\vendor\workerman\gateway-worker\src\Gateway.php(613): Workerman\Connection\TcpConnection->send(Object(__PHP_Incomplete_Class), false)
+#2 E:\WWW\laravel-worker\socket\GatewayWorker\vendor\workerman\workerman\Connection\TcpConnection.php(660): GatewayWorker\Gateway->onWorkerMessage(Object(Workerman\Connection\TcpConnection), Array)
+#3 E:\WWW\laravel-worker\socket\GatewayWorker\vendor\workerman\workerman\Events\Select.php(293): Workerman\Connection\TcpConnection->baseRead(Resource id #37)
+#4 E:\WWW\laravel-worker\socket\GatewayWorker\vendor\workerman\workerman\Worker.php(2408): Workerman\Events\Select->loop()
+#5 E:\WWW\laravel-worker\socket\GatewayWorker\vendor\workerman\gateway-worker\src\Gateway.php(276): Workerman\Worker->run()
+#6 E:\WWW\laravel-worker\socket\GatewayWorker\vendor\workerman\workerman\Worker.php(1404): GatewayWorker\Gateway->run()
+#7 E:\WWW\laravel-worker\socket\GatewayWorker\vendor\workerman\workerman\Worker.php(1347): Workerman\Worker::forkWorkersForWindows()
+#8 E:\WWW\laravel-worker\socket\GatewayWorker\vendor\workerman\workerman\Worker.php(546): Workerman\Worker::forkWorkers()
+#9 E:\WWW\laravel-worker\socket\GatewayWorker\Applications\YourApp\start_gateway.php(63): Workerman\Worker::runAll()
+#10 {main}
+2020-07-25 12:26:26 pid:1 Worker process terminated
+2020-07-25 12:26:30 pid:1 Exception: You can't send(object) to client, you need to convert it to a string.  in E:\WWW\laravel-worker\socket\GatewayWorker\vendor\workerman\workerman\Protocols\Websocket.php:236
+Stack trace:
+#0 E:\WWW\laravel-worker\socket\GatewayWorker\vendor\workerman\workerman\Connection\TcpConnection.php(344): Workerman\Protocols\Websocket::encode(Object(__PHP_Incomplete_Class), Object(Workerman\Connection\TcpConnection))
+#1 E:\WWW\laravel-worker\socket\GatewayWorker\vendor\workerman\gateway-worker\src\Gateway.php(613): Workerman\Connection\TcpConnection->send(Object(__PHP_Incomplete_Class), false)
+#2 E:\WWW\laravel-worker\socket\GatewayWorker\vendor\workerman\workerman\Connection\TcpConnection.php(660): GatewayWorker\Gateway->onWorkerMessage(Object(Workerman\Connection\TcpConnection), Array)
+#3 E:\WWW\laravel-worker\socket\GatewayWorker\vendor\workerman\workerman\Events\Select.php(293): Workerman\Connection\TcpConnection->baseRead(Resource id #37)
+#4 E:\WWW\laravel-worker\socket\GatewayWorker\vendor\workerman\workerman\Worker.php(2408): Workerman\Events\Select->loop()
+#5 E:\WWW\laravel-worker\socket\GatewayWorker\vendor\workerman\gateway-worker\src\Gateway.php(276): Workerman\Worker->run()
+#6 E:\WWW\laravel-worker\socket\GatewayWorker\vendor\workerman\workerman\Worker.php(1404): GatewayWorker\Gateway->run()
+#7 E:\WWW\laravel-worker\socket\GatewayWorker\vendor\workerman\workerman\Worker.php(1347): Workerman\Worker::forkWorkersForWindows()
+#8 E:\WWW\laravel-worker\socket\GatewayWorker\vendor\workerman\workerman\Worker.php(546): Workerman\Worker::forkWorkers()
+#9 E:\WWW\laravel-worker\socket\GatewayWorker\Applications\YourApp\start_gateway.php(63): Workerman\Worker::runAll()
+#10 {main}
+2020-07-25 12:26:30 pid:1 Worker process terminated
+2020-07-25 12:28:36 pid:1 Exception: You can't send(object) to client, you need to convert it to a string.  in E:\WWW\laravel-worker\socket\GatewayWorker\vendor\workerman\workerman\Protocols\Websocket.php:236
+Stack trace:
+#0 E:\WWW\laravel-worker\socket\GatewayWorker\vendor\workerman\workerman\Connection\TcpConnection.php(344): Workerman\Protocols\Websocket::encode(Object(__PHP_Incomplete_Class), Object(Workerman\Connection\TcpConnection))
+#1 E:\WWW\laravel-worker\socket\GatewayWorker\vendor\workerman\gateway-worker\src\Gateway.php(613): Workerman\Connection\TcpConnection->send(Object(__PHP_Incomplete_Class), false)
+#2 E:\WWW\laravel-worker\socket\GatewayWorker\vendor\workerman\workerman\Connection\TcpConnection.php(660): GatewayWorker\Gateway->onWorkerMessage(Object(Workerman\Connection\TcpConnection), Array)
+#3 E:\WWW\laravel-worker\socket\GatewayWorker\vendor\workerman\workerman\Events\Select.php(293): Workerman\Connection\TcpConnection->baseRead(Resource id #37)
+#4 E:\WWW\laravel-worker\socket\GatewayWorker\vendor\workerman\workerman\Worker.php(2408): Workerman\Events\Select->loop()
+#5 E:\WWW\laravel-worker\socket\GatewayWorker\vendor\workerman\gateway-worker\src\Gateway.php(276): Workerman\Worker->run()
+#6 E:\WWW\laravel-worker\socket\GatewayWorker\vendor\workerman\workerman\Worker.php(1404): GatewayWorker\Gateway->run()
+#7 E:\WWW\laravel-worker\socket\GatewayWorker\vendor\workerman\workerman\Worker.php(1347): Workerman\Worker::forkWorkersForWindows()
+#8 E:\WWW\laravel-worker\socket\GatewayWorker\vendor\workerman\workerman\Worker.php(546): Workerman\Worker::forkWorkers()
+#9 E:\WWW\laravel-worker\socket\GatewayWorker\Applications\YourApp\start_gateway.php(63): Workerman\Worker::runAll()
+#10 {main}
+2020-07-25 12:28:36 pid:1 Worker process terminated

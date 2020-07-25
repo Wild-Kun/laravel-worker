@@ -2,8 +2,8 @@
 <project version="4">
   <component name="WebServers">
     <option name="servers">
-      <webServer id="f098363e-0bfa-478a-ac6f-a891adcbaf42" name="www.wangkun.live:8802" url="http://47.97.172.18">
-        <fileTransfer host="47.97.172.18" port="21">
+      <webServer id="af56d80c-9957-435a-9a6b-0700575737d9" name="aliyun">
+        <fileTransfer rootFolder="/www/wwwroot/laravel-worker.test" accessType="SFTP" host="47.97.172.18" port="22" sshConfigId="640dbe06-ae84-4d5b-9a7e-31a8cc473f4a" sshConfig="root@47.97.172.18:22 password">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
           </advancedOptions>
